@@ -53,13 +53,24 @@ namespace XO
         static char check()
         {
             for (int i = 0; i < 3; i++) {
-                bool horRowWin = cells[i * 3] == cells[i * 3 + 1] && cells[i * 3 + 1] == cells[i * 3 + 2];
-                bool vertRowWin = cells[i] == cells[i + 3] && cells[i + 3] == cells[i + 6];
-                bool diagWin = (cells[2] == cells[4] && cells[4] == cells[6]) || (cells[0] == cells[4] && cells[4] == cells[8]);
-                if (horRowWin || vertRowWin || diagWin)
+                if (IsHorizontalWin(i) || IsVerticalWin(i) || IsDiagonalWin(i))
                     return cells[i];
             }
             return '-';
+        }
+
+        static bool IsHorizontalWin(int idx) {
+            return cells[idx * 3] == cells[idx * 3 + 1] && cells[idx * 3 + 1] == cells[idx * 3 + 2];
+        }
+
+        static bool IsVerticalWin(int idx)
+        {
+            return cells[idx] == cells[idx + 3] && cells[idx + 3] == cells[idx + 6];
+        }
+
+        static bool IsDiagonalWin(int idx)
+        {
+            return (cells[2] == cells[4] && cells[4] == cells[6]) || (cells[0] == cells[4] && cells[4] == cells[8]);
         }
 
         static void result()
