@@ -53,7 +53,7 @@ namespace XO
         static char check()
         {
             for (int i = 0; i < 3; i++) {
-                if (IsHorizontalWin(i) || IsVerticalWin(i) || IsDiagonalWin(i))
+                if (IsHorizontalWin(i) || IsVerticalWin(i) || IsDiagonalWin())
                     return cells[i];
             }
             return '-';
@@ -68,7 +68,7 @@ namespace XO
             return cells[idx] == cells[idx + 3] && cells[idx + 3] == cells[idx + 6];
         }
 
-        static bool IsDiagonalWin(int idx)
+        static bool IsDiagonalWin()
         {
             return (cells[2] == cells[4] && cells[4] == cells[6]) || (cells[0] == cells[4] && cells[4] == cells[8]);
         }
